@@ -10,6 +10,8 @@ import android.view.Menu
 import android.view.MenuItem
 import com.example.tabsdemo.ui.main.SectionsPagerAdapter
 import com.example.tabsdemo.databinding.ActivityMainBinding
+import org.json.JSONObject
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,6 +19,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val stream = resources.openRawResource(R.raw.test)
+        val cities = JSONObject(Scanner(stream).nextLine())
+        val cities_array = cities.getJSONArray("cities")
 
         // data binding предусмотрен изначально в заготовке проекта
         binding = ActivityMainBinding.inflate(layoutInflater)
